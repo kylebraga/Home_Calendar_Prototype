@@ -1,6 +1,7 @@
 package com.example.kbrag_000.homecalendartestproject;
 
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -34,14 +35,14 @@ public class CalendarRecyclerAdapter extends RecyclerView.Adapter<CalendarRecycl
     @Override
     public CalendarRecyclerAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
                                                    int viewType) {
-        // create a new view
-        //View v = LayoutInflater.from(parent.getContext())
-                //.inflate(R.layout.fragment_card, parent, false);
+        //create a new view
+        View v = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.fragment_card, parent, false);
         // set the view's size, margins, paddings and layout parameters
 
-        //ViewHolder vh = new ViewHolder(v);
-        //return vh;
-        return null;
+        ViewHolder vh = new ViewHolder(v);
+        return vh;
+
     }
 
     // Replace the contents of a view (invoked by the layout manager)
