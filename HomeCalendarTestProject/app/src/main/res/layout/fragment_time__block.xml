@@ -1,0 +1,9 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="fill_parent"
+    android:layout_height="60dp"
+    tools:context="com.example.kbrag_000.homecalendartestproject.Time_Block_Fragment"
+    android:background="#d3d3d3">
+
+    <!-- TODO: Update blank fragment layout -->
+
+</RelativeLayout>
