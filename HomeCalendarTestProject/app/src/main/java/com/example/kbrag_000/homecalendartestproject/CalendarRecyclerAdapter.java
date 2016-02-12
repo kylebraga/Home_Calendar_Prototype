@@ -38,7 +38,7 @@ public class CalendarRecyclerAdapter extends RecyclerView.Adapter<CalendarRecycl
                                                    int viewType) {
         //create a new view
         View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.fragment_card, parent, false);
+                .inflate(R.layout.layout_hour_card, parent, false);
         // set the view's size, margins, paddings and layout parameters
 
         ViewHolder vh = new ViewHolder(v);

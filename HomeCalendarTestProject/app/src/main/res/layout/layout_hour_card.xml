@@ -13,6 +13,7 @@
 
         <TextView
             android:id="@+id/info_text"
+            android:text="Dummy Text"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
