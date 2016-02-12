@@ -10,7 +10,7 @@ import android.widget.TextView;
  * Created by basedkyle on 2/11/16.
  */
 public class CalendarRecyclerAdapter extends RecyclerView.Adapter<CalendarRecyclerAdapter.ViewHolder> {
-    private String[] mDataset;
+    private int[] mDataset;
 
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
@@ -28,7 +28,7 @@ public class CalendarRecyclerAdapter extends RecyclerView.Adapter<CalendarRecycl
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public CalendarRecyclerAdapter(String[] myDataset) {
+    public CalendarRecyclerAdapter(int[] myDataset) {
         mDataset = myDataset;
     }
 
