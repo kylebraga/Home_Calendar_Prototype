@@ -1,7 +1,8 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.kbrag_000.homecalendartestproject.Card_Time_Header_Fragment">
+    tools:context="com.example.kbrag_000.homecalendartestproject.Card_Time_Header_Fragment"
+    android:weightSum="1">
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -18,18 +19,6 @@
         android:layout_marginTop="2dp"
         android:textSize="35dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="pm"
-        android:id="@+id/textView4"
-        android:textSize="15dp"
-        android:layout_above="@+id/SplitLine_hor1"
-        android:layout_toRightOf="@+id/textView3"
-        android:layout_toEndOf="@+id/textView3"
-        android:layout_marginBottom="8dp" />
-
     <View
         android:id="@+id/SplitLine_hor1"
         android:layout_width="match_parent"
@@ -38,28 +27,9 @@
         android:paddingTop="2dp"
         android:layout_alignBottom="@+id/textView3"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginLeft="0dp" />
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageView2"
-        android:src="@drawable/notifications_icon_black24dp"
-        android:layout_alignBottom="@+id/SplitLine_hor1"
-        android:layout_toLeftOf="@+id/imageView"
-        android:layout_toStartOf="@+id/imageView"
-        android:layout_marginBottom="2dp" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageView"
-        android:src="@drawable/email_icon_black"
-        android:layout_marginRight="22dp"
-        android:layout_marginEnd="22dp"
-        android:layout_alignBottom="@+id/SplitLine_hor1"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginBottom="2dp" />
-
-</RelativeLayout>
+</LinearLayout>
