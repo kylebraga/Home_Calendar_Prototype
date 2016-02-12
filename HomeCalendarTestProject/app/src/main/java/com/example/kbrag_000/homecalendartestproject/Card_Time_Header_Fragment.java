@@ -15,6 +15,21 @@ import android.widget.RadioButton;
  */
 public class Card_Time_Header_Fragment extends Fragment {
 
+    public Card_Time_Header_Fragment() {
+    }
+
+                       wwww
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+    {
+        View view = inflater.inflate(R.layout.fragment_card__time__header, container, false);
+        if(view != null) {
+            return view;
+        }
+
+        return view;
+    }
+    /*
+
     private static final String TAG = "Card_Time_Header_Fragment";
     private static final String KEY_LAYOUT_MANAGER = "layoutManager";
     private static final int SPAN_COUNT = 2;
@@ -128,5 +143,5 @@ public class Card_Time_Header_Fragment extends Fragment {
             mDataset[i] = temp;
             sb.delete(0,sb.length() - 1);
         }
-    }
+    }*/
 }

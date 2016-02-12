@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 /**
  * Created by basedkyle on 2/11/16.
  */
@@ -23,20 +25,22 @@ public class CalendarRecyclerAdapter extends RecyclerView.Adapter<CalendarRecycl
         //}
         // each data item is just a string in this case
 
-        /*public View mfragView;
-        public View mCardView;
+        /*
         public View mLayoutWithCard;
 
         public ViewHolder(View v {
             super(v);
-            mLayoutWithCard = v;
+
             mfragView = c;
         }*/
 
-        public View mTextView;
-        public ViewHolder(View v) {
+        public TextView mTextView;
+        public View mfragView;
+
+        public ViewHolder(TextView v) {
             super(v);
             mTextView = v;
+            //mfragView = c;
         }
     }
 
@@ -51,18 +55,20 @@ public class CalendarRecyclerAdapter extends RecyclerView.Adapter<CalendarRecycl
                                                    int viewType) {
         //create a new view
         View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.layout_hour_card_test, parent, false);
+                .inflate(R.layout.layout_hour_card, parent, false);
 
+       /* View c = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.fragment_card__time__header, parent, false);
 
-        /*// set the view's size, margins, paddings and layout parameters
+        // set the view's size, margins, paddings and layout parameters
         View c = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.fragment_card__time__header, parent, false);
 
         View d = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.ca, parent, false);
         */
-
-        ViewHolder vh = new ViewHolder(v);
+        TextView tampText = (TextView) v.findViewById(R.id.textView3);
+        ViewHolder vh = new ViewHolder(tampText);
         return vh;
 
     }
@@ -72,9 +78,12 @@ public class CalendarRecyclerAdapter extends RecyclerView.Adapter<CalendarRecycl
     public void onBindViewHolder(ViewHolder holder, int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
-        TextView myText = (TextView) holder.mTextView.findViewById(R.id.timeText);
-        myText.setText(mDataset[position]);
-
+        //TextView myText = (TextView) holder.mTextView.findViewById(R.id.fragment10);
+        //myText.setText(mDataset[position]);
+        //View v = holder.mTextView.findViewById(R.id.fragment10);
+        //TextView myText = (TextView) holder.mTextView.findViewById(R.id.textView3);
+        //myText.setText(mDataset[position]);
+        holder.mTextView.setText(mDataset[position]);
     }
 
     // Return the size of your dataset (invoked by the layout manager)
