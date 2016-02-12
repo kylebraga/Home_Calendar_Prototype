@@ -107,12 +107,12 @@ public class Card_Time_Header_Fragment extends Fragment {
     }
 
 
-
-
-
-
-
-
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        // Save currently selected layout manager.
+        savedInstanceState.putSerializable(KEY_LAYOUT_MANAGER, mCurrentLayoutManagerType);
+        super.onSaveInstanceState(savedInstanceState);
+    }
 
 
     private void initDataset()
