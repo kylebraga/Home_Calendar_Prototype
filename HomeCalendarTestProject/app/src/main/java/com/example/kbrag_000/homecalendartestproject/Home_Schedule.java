@@ -30,17 +30,32 @@ public class Home_Schedule extends AppCompatActivity {
         mRecyclerView.setLayoutManager(mLayoutManager);
 
         // specify an adapter (see also next example)
-        String[] myDataset = new String[1];
-        myDataset[0] = "1";
+        String[] myDataset = new String[24];
+        myDataset[0] = "1am";
+        myDataset[1] = "2am";
+        myDataset[2] = "3am";
+        myDataset[3] = "4am";
+        myDataset[4] = "5am";
+        myDataset[5] = "6am";
+        myDataset[6] = "7am";
+        myDataset[7] = "8am";
+        myDataset[8] = "9am";
+        myDataset[9] = "10am";
+        myDataset[10] = "11am";
+        myDataset[11] = "12pm";
+        myDataset[12] = "1pm";
+        myDataset[13] = "2pm";
+        myDataset[14] = "3pm";
+        myDataset[15] = "4pm";
+        myDataset[16] = "5pm";
+        myDataset[17] = "6pm";
+        myDataset[18] = "7pm";
+        myDataset[19] = "8pm";
+        myDataset[20] = "9pm";
+        myDataset[21] = "10pm";
+        myDataset[22] = "11pm";
+        myDataset[23] = "12am";
 
-        /*int arrayNumber = 24;
-        int[] myDataset = new int[arrayNumber];
-
-        for(int i = 0; i < arrayNumber; i++)
-        {
-            myDataset[i] = i + 1;
-        }
-        */
         mAdapter = new CalendarRecyclerAdapter(myDataset);
         mRecyclerView.setAdapter(mAdapter);
 

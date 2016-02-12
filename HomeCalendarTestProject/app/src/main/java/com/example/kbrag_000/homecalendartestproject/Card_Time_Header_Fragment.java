@@ -18,7 +18,7 @@ public class Card_Time_Header_Fragment extends Fragment {
     public Card_Time_Header_Fragment() {
     }
 
-                       wwww
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
         View view = inflater.inflate(R.layout.fragment_card__time__header, container, false);
