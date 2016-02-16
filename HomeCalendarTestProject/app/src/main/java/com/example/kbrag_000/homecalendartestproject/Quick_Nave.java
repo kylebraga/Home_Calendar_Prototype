@@ -21,4 +21,10 @@ public class Quick_Nave extends Fragment {
                              Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_quick__nave, container, false);
     }
+
+    public void executeQuickNav(View view)
+    {
+
+
+    }
 }
