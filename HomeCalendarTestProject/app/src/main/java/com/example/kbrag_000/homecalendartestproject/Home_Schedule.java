@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 
 public class Home_Schedule extends AppCompatActivity {
@@ -82,5 +83,56 @@ public class Home_Schedule extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void executeQuickNav(View view)
+    {
+
+        int position = 0;
+        Quick_Nave quickFrag;
+        RecyclerView recycler = (RecyclerView) findViewById(R.id.my_recycler_view);
+        recycler.scrollToPosition(position);
+    }
+    public void goTo6am(View view)
+    {
+        int position = 5;
+        Quick_Nave quickFrag;
+        RecyclerView recycler = (RecyclerView) findViewById(R.id.my_recycler_view);
+        recycler.scrollToPosition(position);
+    }
+    public void goTo9am(View view)
+    {
+        int position = 8;
+        Quick_Nave quickFrag;
+        RecyclerView recycler = (RecyclerView) findViewById(R.id.my_recycler_view);
+        recycler.scrollToPosition(position);
+    }
+    public void goTo12pm(View view)
+    {
+        int position = 11;
+        Quick_Nave quickFrag;
+        RecyclerView recycler = (RecyclerView) findViewById(R.id.my_recycler_view);
+        recycler.scrollToPosition(position);
+    }
+    public void goTo3pm(View view)
+    {
+        int position = 14;
+        Quick_Nave quickFrag;
+        RecyclerView recycler = (RecyclerView) findViewById(R.id.my_recycler_view);
+        recycler.scrollToPosition(position);
+    }
+    public void goTo6pm(View view)
+    {
+        int position = 17;
+        Quick_Nave quickFrag;
+        RecyclerView recycler = (RecyclerView) findViewById(R.id.my_recycler_view);
+        recycler.scrollToPosition(position);
+    }
+    public void goTo9pm(View view)
+    {
+        int position = 20;
+        Quick_Nave quickFrag;
+        RecyclerView recycler = (RecyclerView) findViewById(R.id.my_recycler_view);
+        recycler.scrollToPosition(position);
     }
 }
