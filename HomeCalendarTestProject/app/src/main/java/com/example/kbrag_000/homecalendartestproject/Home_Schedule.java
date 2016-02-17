@@ -1,5 +1,6 @@
 package com.example.kbrag_000.homecalendartestproject;
 
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -60,6 +61,7 @@ public class Home_Schedule extends AppCompatActivity {
         mAdapter = new CalendarRecyclerAdapter(myDataset);
         mRecyclerView.setAdapter(mAdapter);
 
+        DrawerLayout Drawer;
     }
 
 
