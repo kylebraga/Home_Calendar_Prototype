@@ -7,7 +7,8 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     tools:ignore="contentDescription"
-    tools:context="com.example.kbrag_000.homecalendartestproject.Home_Schedule">
+    tools:context="com.example.kbrag_000.homecalendartestproject.Home_Schedule"
+    android:id="@+id/drawer">
 
 
 
@@ -83,7 +84,14 @@
                 android:layout_margin="10dp" />
         </RelativeLayout>
     </RelativeLayout>
-
+    <android.support.design.widget.NavigationView
+        android:id="@+id/navigation_view"
+        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_gravity="start"
+        app:headerLayout="@layout/nav_header_navigation__drawer"
+        app:menu="@menu/drawer"
+        />
 </android.support.v4.widget.DrawerLayout>
 
 

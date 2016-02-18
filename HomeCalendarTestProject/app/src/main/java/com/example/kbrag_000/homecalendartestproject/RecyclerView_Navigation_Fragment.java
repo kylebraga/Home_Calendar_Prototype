@@ -1,4 +1,4 @@
-package com.example.kbrag_000.homecalendartestproject.dummy;
+package com.example.kbrag_000.homecalendartestproject;
 
 import android.content.Context;
 import android.net.Uri;
@@ -7,8 +7,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import com.example.kbrag_000.homecalendartestproject.R;
 
 
 /**
