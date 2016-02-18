@@ -64,10 +64,10 @@ public class Home_Schedule extends AppCompatActivity {
         mAdapter = new CalendarRecyclerAdapter(myDataset);
         mRecyclerView.setAdapter(mAdapter);
 
-        myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        myToolbar = (Toolbar) findViewById(R.id.tool_bar); // Attaching the layout to the toolbar object
         setSupportActionBar(myToolbar);
 
-        DrawerLayout Drawer;
+        /*DrawerLayout Drawer;
 
         Drawer = (DrawerLayout) findViewById(R.id.drawer_layout);        // Drawer object Assigned to the view
         mDrawerToggle = new ActionBarDrawerToggle(this,Drawer,myToolbar,R.string.navigation_drawer_open,R.string.navigation_drawer_close){
@@ -89,7 +89,7 @@ public class Home_Schedule extends AppCompatActivity {
 
         }; // Drawer Toggle Object Made
         Drawer.setDrawerListener(mDrawerToggle); // Drawer Listener set to the Drawer toggle
-        mDrawerToggle.syncState();               // Finally we set the drawer toggle sync State
+        mDrawerToggle.syncState();               // Finally we set the drawer toggle sync State*/
     }
 
 
@@ -109,7 +109,7 @@ public class Home_Schedule extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            return true; 
+            return true;
         }
 
         return super.onOptionsItemSelected(item);
