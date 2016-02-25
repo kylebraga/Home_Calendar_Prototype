@@ -1,5 +1,6 @@
 package com.example.kbrag_000.homecalendartestproject;
 
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -11,6 +12,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.PopupMenu;
 import android.widget.Toast;
 
 
@@ -23,7 +25,7 @@ public class Home_Schedule extends AppCompatActivity {
     Toolbar myToolbar;
     private NavigationView navigationView;
     private DrawerLayout drawerLayout;
-
+    private FloatingActionButton addButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -179,6 +181,27 @@ public class Home_Schedule extends AppCompatActivity {
         }; // Drawer Toggle Object Made
         Drawer.setDrawerListener(mDrawerToggle); // Drawer Listener set to the Drawer toggle
         mDrawerToggle.syncState();               // Finally we set the drawer toggle sync State*/
+
+
+        addButton = (FloatingActionButton)findViewById(R.id.addFabButton);
+
+        addButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                PopupMenu addPopUp = new PopupMenu(Home_Schedule.this, addButton);
+                addPopUp.getMenuInflater().inflate(R.menu.add_event_popup_menu, addPopUp.getMenu());
+
+                addPopUp.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    public boolean onMenuItemClick(MenuItem item) {
+                        Toast.makeText(Home_Schedule.this, "You Clicked: " + item.getTitle(), Toast.LENGTH_SHORT).show();
+                        return true;
+                    }
+                });
+
+                addPopUp.show();
+            }
+        });
     }
 
 

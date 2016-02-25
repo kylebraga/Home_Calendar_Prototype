@@ -15,7 +15,7 @@
 
         <activity
             android:name=".Home_Schedule"
-            android:label="9:30pm">
+            android:label="Home Schedule">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
