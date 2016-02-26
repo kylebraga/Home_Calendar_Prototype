@@ -27,13 +27,15 @@
             android:layout_height="match_parent"
             android:layout_below="@+id/tool_bar"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true">
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="0dp">
 
             <fragment xmlns:android="http://schemas.android.com/apk/res/android"
                 xmlns:tools="http://schemas.android.com/tools" android:id="@+id/fragment"
                 android:name="com.example.kbrag_000.homecalendartestproject.Home_ScheduleFragment"
                 tools:layout="@layout/fragment_home__schedule" android:layout_width="match_parent"
-                android:layout_height="70dp"
+                android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"

@@ -15,7 +15,7 @@
 
         <activity
             android:name=".Home_Schedule"
-            android:label="Home Schedule">
+            android:label="">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
