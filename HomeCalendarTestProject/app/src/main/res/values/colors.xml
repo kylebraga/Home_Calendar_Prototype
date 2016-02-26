@@ -5,5 +5,7 @@
     <color name="ColorSecondary">#DE1B1B</color>
     <color name="ColorThird">#F6F6F6</color>
     <color name="ColorFourth">#E9E581</color>
+    <color name="ColorGreen">#007f00</color>
+    <color name="ColorOrangeish">#cc7000</color>
 
 </resources>
