@@ -9,7 +9,7 @@ import android.database.sqlite.SQLiteDatabase;
 /**
  * Created by basedkyle on 2/28/16.
  */
-public class Event_Manager {
+public class EventLog_Db_Manager {
 
     public String mTableName = "Events";
     public String mDatabaseName = "EventLog_DB";
@@ -23,7 +23,7 @@ public class Event_Manager {
     public String mCommaSep = ",";
     public SQLiteDatabase eventDb;
 
-    Event_Manager (String tableInput)
+    EventLog_Db_Manager(String tableInput)
     {
 
     }
@@ -38,14 +38,17 @@ public class Event_Manager {
     public void CreateEventLog()
     {
         eventDb = eventDb.openOrCreateDatabase(mDatabaseName, null, null);
+
         eventDb.execSQL("CREATE TABLE IF NOT EXISTS" +
                 mTableName + "(" +
                                     mEventIdLabel + mEntryType + mCommaSep +
                                     mEventNameLabel + mEntryType + mCommaSep +
                                     mEventIdLabel + mEntryType + mCommaSep +
-                                    mEventIdLabel + mEntryType + mCommaSep +
-
-                "id VARCHAR,name VARCHAR,marks VARCHAR);");
+                                    mEventOwnerLabel + mEntryType + mCommaSep +
+                                    mEventStartLabel + mEntryType + mCommaSep +
+                                    mEventEndlabel + mEntryType + mCommaSep +
+                                    mEventColorLabel + mEntryType + mCommaSep +
+                            ");");
     }
 
 }
