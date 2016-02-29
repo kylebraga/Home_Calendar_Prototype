@@ -10,9 +10,7 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="Jot"
-        android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-        >
-
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
             android:name=".Home_Schedule"
             android:label="">
@@ -25,7 +23,11 @@
         <activity
             android:name=".Navigation_Drawer"
             android:label="@string/title_activity_navigation__drawer"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Add_New_Event"
+            android:label=""
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
     </application>
 
 </manifest>

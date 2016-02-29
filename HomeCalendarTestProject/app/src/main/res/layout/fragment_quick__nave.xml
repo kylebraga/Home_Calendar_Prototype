@@ -130,7 +130,7 @@
         android:layout_width="45dp"
         android:layout_height="45dp"
         android:id="@+id/sixpmButt"
-        android:textSize="10dp"
+        android:textSize="12sp"
         android:background= "@color/ColorPrimary"
         android:textColor="@color/ColorThird"
         android:text="6pm"
