@@ -30,14 +30,14 @@ public class EventLog_Db_Manager {
     public String mCurrentDate;
     public String mCurrentEventColor;
 
-    EventLog_Db_Manager(String tableInput)
+    public EventLog_Db_Manager()
     {
         CreateEventLog();
     }
 
     public void CreateEventLog()
     {
-        eventDb = eventDb.openOrCreateDatabase(mDatabaseName, null, null);
+        eventDb = SQLiteDatabase.openOrCreateDatabase(mDatabaseName, null, null);
 
         eventDb.execSQL("CREATE TABLE IF NOT EXISTS" +
                 mTableName + "(" +
