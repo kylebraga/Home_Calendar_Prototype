@@ -17,6 +17,9 @@ import android.widget.TextView;
 
 import com.example.kbrag_000.homecalendartestproject.dummy.EventLog_Db_Manager;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.sql.Time;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -31,6 +34,7 @@ public class Add_New_Event extends AppCompatActivity {
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
     EventLog_Db_Manager mDbManager;
+    public int TIME_BLOCK_SIZE = 15;
 
     //Get Entered Details Variables
     public static String mCurrentEventName;
@@ -120,13 +124,41 @@ public class Add_New_Event extends AppCompatActivity {
             }
         });
 
-        mDbManager = new EventLog_Db_Manager();
+        ConnectToDb();
+        //mDbManager = new EventLog_Db_Manager();
     }
 
     public void goToHome(View view)
     {
         Intent intent = new Intent(this, Home_Schedule.class);
         startActivity(intent);
+    }
+
+    public void ConnectToDb()
+    {
+        try {
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println("# - driver loaded");
+
+        String server = "BASEDKYLE\\SQLEXPRESS";
+
+        int port = 64038;
+
+        String database = "Data";
+
+        String jdbcUrl = "jdbc:sqlserver://"+server+":"+port+" ;databaseName = "+database+";integratedSecurity=true";
+
+        try {
+            Connection con = DriverManager.getConnection(jdbcUrl);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println("# - Connection obtained");
     }
 
     private void SaveNewEvent(View view)
@@ -195,7 +227,6 @@ public class Add_New_Event extends AppCompatActivity {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        mDurationDate = tempDate;
 
         DateFormat hourFormat = new SimpleDateFormat("HH:mm");
         Time tempStartTime = null;
@@ -211,6 +242,7 @@ public class Add_New_Event extends AppCompatActivity {
             e.printStackTrace();
         }
 
+        mDurationDate = tempDate;
         mDurationStartTime = tempStartTime;
         mDurationEndTime = tempEndTime;
     }
@@ -219,11 +251,21 @@ public class Add_New_Event extends AppCompatActivity {
     {
         Time tempStartTime = mDurationStartTime;
         Time tempEndTime = mDurationEndTime;
+        int tempNumCalBlocks = 0;
+        long tempDuration = mDurationEndTime.getTime() - mDurationStartTime.getTime();
 
-        //Calcualate number of calendar blocks (15 min incriments) for event
+        //convert millaseconds difference into minutes
+        long durationMinutes = tempDuration / (60 * 1000) % 60;
+        long durationHolder = durationMinutes;
 
-        int tempNumCalBlocks;
-        //Time timeDiff = (tempEndTime - tempEndTime);
+        //Subtract time block size from the total minute duration minutes in order to see how many 15 minute blocks the event requires
+        while(durationHolder > 0)
+        {
+            tempNumCalBlocks += 1;
+            durationHolder -= TIME_BLOCK_SIZE;
+        }
+
+        mDurationNumCalBlocks = tempNumCalBlocks;
     }
 
     private void insertDurationInfoIntoDB() {
@@ -231,12 +273,14 @@ public class Add_New_Event extends AppCompatActivity {
         /*do database work here */
 
     }
-    
+
     private void setEventInfoValues(int tempEventId)
     {
         mEventId = getEventId();
+        mEventName = mCurrentEventName;
         mEventColorId = getColorId();
-        mEventOwnerId = getOwnerId();
+        //mEventOwnerId = getOwnerId();
+        mEventOwnerId = 1;
         mEventDurationId = mDurationId;
         mEventColorId = getColorId();
     }
