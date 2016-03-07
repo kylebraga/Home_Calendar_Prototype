@@ -36,6 +36,12 @@ public class Add_New_Event extends AppCompatActivity {
     EventLog_Db_Manager mDbManager;
     public int TIME_BLOCK_SIZE = 15;
 
+    //Connection Variables
+    public Connection mEventDB_Connection;
+    public String mServerName = "BASEDKYLE\\SQLEXPRESS";
+    public  String mDatabaseName = "Test_Jot_DB";
+    public int mPortNum = 64038;
+
     //Get Entered Details Variables
     public static String mCurrentEventName;
     public static String mCurrentEventOwner;
@@ -125,6 +131,7 @@ public class Add_New_Event extends AppCompatActivity {
         });
 
         ConnectToDb();
+        ConnectToDb();
         //mDbManager = new EventLog_Db_Manager();
     }
 
@@ -144,18 +151,14 @@ public class Add_New_Event extends AppCompatActivity {
 
         System.out.println("# - driver loaded");
 
-        String server = "BASEDKYLE\\SQLEXPRESS";
-
-        int port = 64038;
-
-        String database = "Data";
-
-        String jdbcUrl = "jdbc:sqlserver://"+server+":"+port+" ;databaseName = "+database+";integratedSecurity=true";
+        String jdbcUrl = "jdbc:sqlserver://"+mServerName+":"+mPortNum+" ;databaseName = "+mDatabaseName+";integratedSecurity=true";
 
         try {
-            Connection con = DriverManager.getConnection(jdbcUrl);
+            mEventDB_Connection = DriverManager.getConnection(jdbcUrl);
+
         } catch (SQLException e) {
             e.printStackTrace();
+
         }
 
         System.out.println("# - Connection obtained");
