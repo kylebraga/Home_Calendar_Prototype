@@ -13,11 +13,12 @@ public class EventLog_Db_Manager {
     public String mDatabaseName = "EventLog_DB";
     public String mEventIdLabel = "event_id";
     public String mEventNameLabel = "event_name";
-    public String mEventOwnerLabel = "owner_name";
+    public String mEventOwnerLabel = "ownerId";
     public String mEventStartLabel = "start_time";
     public String mEventEndLabel  = "end_time";
     public String mEventDateLabel = "event_date";
     public String mEventColorLabel = "event_color";
+    public String mNumCalBlocksLabel = "numCalendarBlocks";
     public String mEntryType = " VARCHAR";
     public String mCommaSep = ",";
     public SQLiteDatabase eventDb;
@@ -29,6 +30,7 @@ public class EventLog_Db_Manager {
     public String mCurrentEventEnd;
     public String mCurrentDate;
     public String mCurrentEventColor;
+    public int mCurrentNumCalBlocks;
 
     public EventLog_Db_Manager()
     {
