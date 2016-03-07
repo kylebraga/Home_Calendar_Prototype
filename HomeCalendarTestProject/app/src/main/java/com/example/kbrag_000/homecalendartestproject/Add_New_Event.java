@@ -11,17 +11,30 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.example.kbrag_000.homecalendartestproject.dummy.EventLog_Db_Manager;
 
 public class Add_New_Event extends AppCompatActivity {
 
+    //Display Variables
     Toolbar myToolbar;
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
     EventLog_Db_Manager mDbManager;
-    public static int mIdCount = 0;
+
+    //Get Entered Details Variables
+    public static String mCurrentEventName;
+    public static String mCurrentEventOwner;
+    public static String mCurrentEventTimeStart;
+    public static String mCurrentEventTimeEnd;
+    public static String mCurrentEventDate;
+    public static String mCurrentEventColorName;
+
+    
+
 
 
     @Override
@@ -83,23 +96,22 @@ public class Add_New_Event extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void saveEvent(View view)
+    public void getEnteredInformation(View view)
     {
         TextView titleText = (TextView) findViewById(R.id.titleInput);
         TextView startText = (TextView) findViewById(R.id.startInput);
         TextView endText = (TextView) findViewById(R.id.endInput);
         TextView dateText = (TextView) findViewById(R.id.dateInput);
 
-        String eventTitle = titleText.getText().toString();
-        String eventOwner = "Lil B";
-        String eventStart = startText.getText().toString();
-        String eventEnd = endText.getText().toString();
-        String eventDate = dateText.getText().toString();
-        String eventColor = "#007f00";
+        RadioGroup colorRadioGroup = (RadioGroup) findViewById(R.id.colorRadioGroup);
+        int selectedRadioId = colorRadioGroup.getCheckedRadioButtonId();
+        RadioButton radiocolorButton = (RadioButton) findViewById(selectedRadioId);
 
-
-        mDbManager.CallInsertToEventLog(String.valueOf(mIdCount),eventTitle, eventOwner, eventStart, eventEnd, eventColor, eventDate);
-
-        mIdCount += 1;
+        String mCurrentEventName = titleText.getText().toString();
+        String mCurrentEventTimeStart = startText.getText().toString();
+        String mCurrentEventTimeEnd = endText.getText().toString();
+        String mCurrentEventDate = dateText.getText().toString();
+        String mCurrentEventColorName = radiocolorButton.getText().toString();
     }
+
 }
