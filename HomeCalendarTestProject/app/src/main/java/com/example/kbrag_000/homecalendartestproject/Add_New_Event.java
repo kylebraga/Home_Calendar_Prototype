@@ -18,7 +18,11 @@ import android.widget.TextView;
 import com.example.kbrag_000.homecalendartestproject.dummy.EventLog_Db_Manager;
 
 import java.sql.Time;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 public class Add_New_Event extends AppCompatActivity {
 
@@ -58,11 +62,11 @@ public class Add_New_Event extends AppCompatActivity {
     public String UserZipcode;
 
     //Event Info  Variables
-    public int EventId;
-    public String EventName;
-    public int EventOwnerId;
-    public int EventDurationId;
-    public int EventColorId;
+    public int mEventId;
+    public String mEventName;
+    public int mEventOwnerId;
+    public int mEventDurationId;
+    public int mEventColorId;
 
 
 
@@ -125,7 +129,25 @@ public class Add_New_Event extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void getEnteredInformation(View view)
+    private void SaveNewEvent(View view)
+    {
+        setAllEventValues(view);
+        insertEventIntoDb();
+    }
+    private void insertEventIntoDb()
+    {
+
+    }
+
+    private void setAllEventValues(View view)
+    {
+        int tempEventId = getEventId();
+        setEnteredInformation(view);
+        SetDurationValues(tempEventId);
+        setEventInfoValues(tempEventId);
+    }
+
+    public void setEnteredInformation(View view)
     {
         TextView titleText = (TextView) findViewById(R.id.titleInput);
         TextView startText = (TextView) findViewById(R.id.startInput);
@@ -141,6 +163,128 @@ public class Add_New_Event extends AppCompatActivity {
         String mCurrentEventTimeEnd = endText.getText().toString();
         String mCurrentEventDate = dateText.getText().toString();
         String mCurrentEventColorName = radiocolorButton.getText().toString();
+
+        mCurrentEventOwner = "Lil B";
     }
+
+
+    public void SetDurationValues(int tempEventId)
+    {
+        mDurationEventId = tempEventId;
+        setDurationId();
+        setDurationTimeValues();
+        setNumCalBlocks();
+        insertDurationInfoIntoDB();
+    }
+
+    private void setDurationId()
+    {
+        //int tempDurationId = getLastDurationId();
+        int tempDurationId = 1;
+        tempDurationId += 1;
+
+        mDurationId = tempDurationId;
+    }
+
+    private void setDurationTimeValues()
+    {
+        DateFormat dateFormat = new SimpleDateFormat("MMMM d, yyyy", Locale.ENGLISH);
+        Date tempDate = null;
+        try {
+            tempDate = dateFormat.parse(mCurrentEventDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        mDurationDate = tempDate;
+
+        DateFormat hourFormat = new SimpleDateFormat("HH:mm");
+        Time tempStartTime = null;
+        try {
+            tempStartTime = new Time(hourFormat.parse(mCurrentEventTimeStart).getTime());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        Time tempEndTime = null;
+        try {
+            tempEndTime = new Time(hourFormat.parse(mCurrentEventTimeEnd).getTime());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        mDurationStartTime = tempStartTime;
+        mDurationEndTime = tempEndTime;
+    }
+
+    private void setNumCalBlocks()
+    {
+        Time tempStartTime = mDurationStartTime;
+        Time tempEndTime = mDurationEndTime;
+
+        //Calcualate number of calendar blocks (15 min incriments) for event
+
+        int tempNumCalBlocks;
+        //Time timeDiff = (tempEndTime - tempEndTime);
+    }
+
+    private void insertDurationInfoIntoDB() {
+
+        /*do database work here */
+
+    }
+    
+    private void setEventInfoValues(int tempEventId)
+    {
+        mEventId = getEventId();
+        mEventColorId = getColorId();
+        mEventOwnerId = getOwnerId();
+        mEventDurationId = mDurationId;
+        mEventColorId = getColorId();
+    }
+
+    private int getOwnerId()
+    {
+        int ownerId = 1;
+        //ownerId = getOwnerId(mCurrentEventOwner);
+
+        return ownerId;
+    }
+
+    private int getEventId()
+    {
+        int eventId = 1;
+        //eventId = getEventId();
+
+        return eventId;
+    }
+
+    private int getColorId()
+    {
+        int tempId;
+
+        switch (mColorName)
+        {
+            case "Red":
+                tempId = 1;
+                break;
+            case "Orange":
+                tempId = 2;
+                break;
+            case "Yellow":
+                tempId = 3;
+                break;
+            case "Green":
+                tempId = 4;
+                break;
+            case "Blue":
+                tempId = 5;
+                break;
+            default:
+                tempId = 1;
+                break;
+        }
+
+        return tempId;
+    }
+
 
 }
