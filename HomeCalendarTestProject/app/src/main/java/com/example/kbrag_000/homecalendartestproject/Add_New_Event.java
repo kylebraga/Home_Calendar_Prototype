@@ -17,6 +17,9 @@ import android.widget.TextView;
 
 import com.example.kbrag_000.homecalendartestproject.dummy.EventLog_Db_Manager;
 
+import java.sql.Time;
+import java.util.Date;
+
 public class Add_New_Event extends AppCompatActivity {
 
     //Display Variables
@@ -33,7 +36,33 @@ public class Add_New_Event extends AppCompatActivity {
     public static String mCurrentEventDate;
     public static String mCurrentEventColorName;
 
-    
+    //Event Duration Variables
+    public int mDurationId;
+    public int mDurationEventId;
+    public Date mDurationDate;
+    public Time mDurationStartTime;
+    public Time mDurationEndTime;
+    public int mDurationNumCalBlocks;
+
+    //Event Color Variables
+    public  int mColorId;
+    public  String mColorName;
+    public  String mColorHex;
+
+    //Event User  Variables
+    public int UserId;
+    public String UserFirstName;
+    public String UserLastName;
+    public String UserEmail;
+    public String UserPassword;
+    public String UserZipcode;
+
+    //Event Info  Variables
+    public int EventId;
+    public String EventName;
+    public int EventOwnerId;
+    public int EventDurationId;
+    public int EventColorId;
 
 
 
