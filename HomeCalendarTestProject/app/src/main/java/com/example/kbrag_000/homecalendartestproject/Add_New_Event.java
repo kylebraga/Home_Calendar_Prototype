@@ -156,7 +156,7 @@ public class Add_New_Event extends AppCompatActivity {
         try {
             mEventDB_Connection = DriverManager.getConnection(jdbcUrl);
 
-        } catch (SQLException e) { 
+        } catch (SQLException e) {
             e.printStackTrace();
 
         }

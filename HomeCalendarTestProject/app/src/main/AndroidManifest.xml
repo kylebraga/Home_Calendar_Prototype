@@ -27,6 +27,10 @@
         <activity
             android:name=".Add_New_Event"
             android:label=""
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".dummy.LogIn"
+            android:label="@string/title_activity_log_in"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
     </application>
 
