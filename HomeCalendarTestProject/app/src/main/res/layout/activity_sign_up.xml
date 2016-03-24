@@ -7,22 +7,24 @@
     android:fitsSystemWindows="true"
     tools:context="com.example.kbrag_000.homecalendartestproject.SignUp">
 
-    <android.support.design.widget.AppBarLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppBarOverlay">
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+        <include
+            android:id="@+id/tool_bar"
+            layout="@layout/tool_bar"
+            android:layout_height="60sp"
+            android:layout_width="fill_parent"></include>
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/PopupOverlay" />
+         <include layout="@layout/content_sign_up"
+             android:layout_width="fill_parent"
+             android:layout_height="fill_parent"
+             android:layout_below="@+id/tool_bar"
+             android:layout_alignParentLeft="true"
+             android:layout_alignParentStart="true" />
 
-    </android.support.design.widget.AppBarLayout>
-
-    <include layout="@layout/content_sign_up" />
-
-
+    </RelativeLayout>
 
 </android.support.design.widget.CoordinatorLayout>
