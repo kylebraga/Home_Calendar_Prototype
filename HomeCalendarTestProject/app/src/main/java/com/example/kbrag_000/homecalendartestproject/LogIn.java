@@ -10,30 +10,41 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Toast;
 
-public class ForgotPassword extends AppCompatActivity {
+import com.example.kbrag_000.homecalendartestproject.R;
+
+public class LogIn extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_forgot_password);
+        setContentView(R.layout.activity_log_in);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(toolbar);
 
     }
 
-    public void goToResetPassword(View view)
+    public void goToSignUp(View view)
+    {
+        Intent intent = new Intent(this, SignUp.class);
+        startActivity(intent);
+    }
+
+    public void attemptLogIn(View view)
     {
         Context context = getApplicationContext();
-        String text = "Email Sent With Reset Code";
+        String text = "Welcome Back!";
         int duration = Toast.LENGTH_LONG;
         Toast toast = Toast.makeText(context, text, duration);
         toast.show();
 
-        Intent intent = new Intent(this, ResetPassword.class);
+        Intent intent = new Intent(this, Home_Schedule.class);
         startActivity(intent);
     }
 
-
-
+    public void goToForgotPassword(View view)
+    {
+        Intent intent = new Intent(this, ForgotPassword.class);
+        startActivity(intent);
+    }
 }

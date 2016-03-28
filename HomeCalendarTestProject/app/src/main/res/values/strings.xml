@@ -12,7 +12,11 @@
     <string name="title_activity_add__new__event">Add New Event</string>
     <string name="title_activity_log_in">Log In</string>
     <string name="title_activity_sign_up">Sign Up</string>
-    <string name="title_activity_forgot_password">Forgot Password</string>
+    <string name="title_activity_forgot_password"> <u>Forgot Password</u></string>
+    <string name="title_activity_reset_password">Reset Password</string>
+
+    <string name="forgot_password"> <u>Forgot Password?</u></string>
+
 
 
 </resources>

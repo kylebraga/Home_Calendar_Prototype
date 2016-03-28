@@ -27,10 +27,17 @@ public class Home_Schedule extends AppCompatActivity {
     private NavigationView navigationView;
     private DrawerLayout drawerLayout;
     private FloatingActionButton addButton;
+    public static Boolean hasLoggedIn = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home__schedule);
+
+        if(!hasLoggedIn)
+        {
+            hasLoggedIn = true;
+            goToLogIn();
+        }
         mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
 
         // use this setting to improve performance if you know that changes
@@ -282,6 +289,10 @@ public class Home_Schedule extends AppCompatActivity {
     {
         Intent intent = new Intent(this, Add_New_Event.class);
         startActivity(intent);
-
+    }
+    public void goToLogIn()
+    {
+        Intent intent = new Intent(this, LogIn.class);
+        startActivity(intent);
     }
 }

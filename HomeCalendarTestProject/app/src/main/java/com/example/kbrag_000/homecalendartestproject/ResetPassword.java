@@ -10,30 +10,28 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Toast;
 
-public class ForgotPassword extends AppCompatActivity {
+public class ResetPassword extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_forgot_password);
+        setContentView(R.layout.activity_reset_password);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(toolbar);
 
     }
 
-    public void goToResetPassword(View view)
+    public void goToLogInAfterPasswordResest(View view)
     {
         Context context = getApplicationContext();
-        String text = "Email Sent With Reset Code";
+        String text = "Password Reset";
         int duration = Toast.LENGTH_LONG;
         Toast toast = Toast.makeText(context, text, duration);
         toast.show();
 
-        Intent intent = new Intent(this, ResetPassword.class);
+        Intent intent = new Intent(this, LogIn.class);
         startActivity(intent);
     }
-
-
 
 }
