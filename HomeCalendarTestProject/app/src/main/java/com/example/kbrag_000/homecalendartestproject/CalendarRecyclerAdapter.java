@@ -43,6 +43,7 @@ public class CalendarRecyclerAdapter extends RecyclerView.Adapter<CalendarRecycl
 
         // TextView tampText = (TextView) v.findViewById(R.id.hourText);
         ViewHolder vh = new ViewHolder(v);
+
         return vh;
     }
 

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools" android:id="@+id/fragment"
+        android:name="com.example.kbrag_000.homecalendartestproject.Home_ScheduleFragment"
+        tools:layout="@layout/fragment_home__schedule" android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/addFabButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/add_icon_black"
+        app:elevation="4dp"
+        android:layout_marginBottom="39dp"
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@+id/filterFabButton"
+        android:layout_toStartOf="@+id/filterFabButton"
+        android:layout_marginRight="10dp" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/filterFabButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/filter_list_icon_black"
+        app:elevation="4dp"
+        android:layout_alignTop="@+id/addFabButton"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="20dp"
+        android:layout_marginEnd="41dp" />
+
+    <fragment
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:name="com.example.kbrag_000.homecalendartestproject.Quick_Nave"
+        android:id="@+id/fragment2"
+        android:layout_below="@+id/fragment"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/my_recycler_view"
+        android:scrollbars="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/fragment"
+        android:layout_toRightOf="@+id/fragment2"
+        android:layout_toEndOf="@+id/fragment2"
+        android:layout_margin="10dp" />
+</RelativeLayout>

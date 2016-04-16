@@ -1,11 +1,20 @@
 package com.example.kbrag_000.homecalendartestproject;
 
+import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.NavigationView;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.PopupMenu;
+import android.widget.Toast;
 
 
 public class Home_Schedule extends AppCompatActivity {
@@ -13,12 +22,22 @@ public class Home_Schedule extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
-
-
+    ActionBarDrawerToggle mDrawerToggle;
+    Toolbar myToolbar;
+    private NavigationView navigationView;
+    private DrawerLayout drawerLayout;
+    private FloatingActionButton addButton;
+    public static Boolean hasLoggedIn = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home__schedule);
+
+        if(!hasLoggedIn)
+        {
+            hasLoggedIn = true;
+            goToLogIn();
+        }
         mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
 
         // use this setting to improve performance if you know that changes
@@ -59,6 +78,138 @@ public class Home_Schedule extends AppCompatActivity {
         mAdapter = new CalendarRecyclerAdapter(myDataset);
         mRecyclerView.setAdapter(mAdapter);
 
+        myToolbar = (Toolbar) findViewById(R.id.tool_bar); // Attaching the layout to the toolbar object
+        setSupportActionBar(myToolbar);
+
+        //Initializing NavigationView
+        navigationView = (NavigationView) findViewById(R.id.navigation_view);
+
+        //Setting Navigation View Item Selected Listener to handle the item click of the navigation menu
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(MenuItem menuItem) {
+
+
+                //Checking if the item is in checked state or not, if not make it in checked state
+                if(menuItem.isChecked()) menuItem.setChecked(false);
+                else menuItem.setChecked(true);
+
+                //Closing drawer on item click
+                drawerLayout.closeDrawers();
+                /*
+                //Check to see which item was being clicked and perform appropriate action
+                switch (menuItem.getItemId()){
+
+
+                    //Replacing the main content with ContentFragment Which is our Inbox View;
+                    case R.id.inbox:
+                        Toast.makeText(getApplicationContext(),"Inbox Selected",Toast.LENGTH_SHORT).show();
+                        ContentFragment fragment = new ContentFragment();
+                        android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                        fragmentTransaction.replace(R.id.frame,fragment);
+                        fragmentTransaction.commit();
+                        return true;
+
+                    // For rest of the options we just show a toast on click
+
+                    case R.id.starred:
+                        Toast.makeText(getApplicationContext(),"Stared Selected",Toast.LENGTH_SHORT).show();
+                        return true;
+                    case R.id.sent_mail:
+                        Toast.makeText(getApplicationContext(), "Send Selected", Toast.LENGTH_SHORT).show();
+                        return true;
+                    case R.id.drafts:
+                        Toast.makeText(getApplicationContext(),"Drafts Selected",Toast.LENGTH_SHORT).show();
+                        return true;
+                    case R.id.allmail:
+                        Toast.makeText(getApplicationContext(),"All Mail Selected",Toast.LENGTH_SHORT).show();
+                        return true;
+                    case R.id.trash:
+                        Toast.makeText(getApplicationContext(),"Trash Selected",Toast.LENGTH_SHORT).show();
+                        return true;
+                    case R.id.spam:
+                        Toast.makeText(getApplicationContext(),"Spam Selected",Toast.LENGTH_SHORT).show();
+                        return true;
+                    default:
+                        Toast.makeText(getApplicationContext(),"Somethings Wrong",Toast.LENGTH_SHORT).show();
+                        return true;
+
+                }*/
+                return true;
+            }
+        });
+
+        // Initializing Drawer Layout and ActionBarToggle
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawer);
+        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this,drawerLayout,myToolbar,R.string.navigation_drawer_open, R.string.navigation_drawer_close){
+
+            @Override
+            public void onDrawerClosed(View drawerView) {
+                // Code here will be triggered once the drawer closes as we dont want anything to happen so we leave this blank
+                super.onDrawerClosed(drawerView);
+            }
+
+            @Override
+            public void onDrawerOpened(View drawerView) {
+                // Code here will be triggered once the drawer open as we dont want anything to happen so we leave this blank
+
+                super.onDrawerOpened(drawerView);
+            }
+        };
+
+        //Setting the actionbarToggle to drawer layout
+        drawerLayout.setDrawerListener(actionBarDrawerToggle);
+
+        //calling sync state is necessay or else your hamburger icon wont show up
+        actionBarDrawerToggle.syncState();
+
+
+
+
+        /*DrawerLayout Drawer;
+
+        Drawer = (DrawerLayout) findViewById(R.id.drawer_layout);        // Drawer object Assigned to the view
+        mDrawerToggle = new ActionBarDrawerToggle(this,Drawer,myToolbar,R.string.navigation_drawer_open,R.string.navigation_drawer_close){
+
+            @Override
+            public void onDrawerOpened(View drawerView) {
+                super.onDrawerOpened(drawerView);
+                // code here will execute once the drawer is opened( As I dont want anything happened whe drawer is
+                // open I am not going to put anything here)
+            }
+
+            @Override
+            public void onDrawerClosed(View drawerView) {
+                super.onDrawerClosed(drawerView);
+                // Code here will execute once drawer is closed
+            }
+
+
+
+        }; // Drawer Toggle Object Made
+        Drawer.setDrawerListener(mDrawerToggle); // Drawer Listener set to the Drawer toggle
+        mDrawerToggle.syncState();               // Finally we set the drawer toggle sync State*/
+
+
+        addButton = (FloatingActionButton)findViewById(R.id.addFabButton);
+
+        addButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                PopupMenu addPopUp = new PopupMenu(Home_Schedule.this, addButton);
+                addPopUp.getMenuInflater().inflate(R.menu.add_event_popup_menu, addPopUp.getMenu());
+
+                addPopUp.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    public boolean onMenuItemClick(MenuItem item) {
+                        Toast.makeText(Home_Schedule.this, "You Clicked: " + item.getTitle(), Toast.LENGTH_SHORT).show();
+                        return true;
+                    }
+                });
+
+                addPopUp.show();
+            }
+        });
     }
 
 
@@ -82,5 +233,66 @@ public class Home_Schedule extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void executeQuickNav(View view)
+    {
+
+        int position = 0;
+        Quick_Nave quickFrag;
+        RecyclerView recycler = (RecyclerView) findViewById(R.id.my_recycler_view);
+        recycler.scrollToPosition(position);
+    }
+    public void goTo6am(View view)
+    {
+        int position = 5;
+        Quick_Nave quickFrag;
+        RecyclerView recycler = (RecyclerView) findViewById(R.id.my_recycler_view);
+        recycler.scrollToPosition(position);
+    }
+    public void goTo9am(View view)
+    {
+        int position = 8;
+        Quick_Nave quickFrag;
+        RecyclerView recycler = (RecyclerView) findViewById(R.id.my_recycler_view);
+        recycler.scrollToPosition(position);
+    }
+    public void goTo12pm(View view)
+    {
+        int position = 11;
+        Quick_Nave quickFrag;
+        RecyclerView recycler = (RecyclerView) findViewById(R.id.my_recycler_view);
+        recycler.scrollToPosition(position);
+    }
+    public void goTo3pm(View view)
+    {
+        int position = 14;
+        Quick_Nave quickFrag;
+        RecyclerView recycler = (RecyclerView) findViewById(R.id.my_recycler_view);
+        recycler.scrollToPosition(position);
+    }
+    public void goTo6pm(View view)
+    {
+        int position = 17;
+        Quick_Nave quickFrag;
+        RecyclerView recycler = (RecyclerView) findViewById(R.id.my_recycler_view);
+        recycler.scrollToPosition(position);
+    }
+    public void goTo9pm(View view)
+    {
+        int position = 20;
+        Quick_Nave quickFrag;
+        RecyclerView recycler = (RecyclerView) findViewById(R.id.my_recycler_view);
+        recycler.scrollToPosition(position);
+    }
+    public void goToAddEvent(MenuItem item)
+    {
+        Intent intent = new Intent(this, Add_New_Event.class);
+        startActivity(intent);
+    }
+    public void goToLogIn()
+    {
+        Intent intent = new Intent(this, LogIn.class);
+        startActivity(intent);
     }
 }
